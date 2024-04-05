@@ -24,7 +24,11 @@ The goal of LizzieLift is to make the creation of lift curves with weighted data
 
 You can install the development version of LizzieLift like so:
 
-``` r
+``` {r}
+#for others:
+#run devtools::install_github("easoneli176/LizzieLift") to install package
+
+#on my personal machine
 library(devtools)
 library(LizzieLift)
 ```
@@ -48,6 +52,8 @@ wlcredplot(mock_data,"preds","target","weights",3)
 #git remote add origin git@github.com:easoneli176/reponame.git (can copy this link from repo)
 #git branch -M main
 #git push -u origin main
+
+
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
