@@ -1,0 +1,13 @@
+Package: LizzieLift
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: Lizzie Eason
+Maintainer: The package maintainer <easoneli17@gmail.com>
+Description: Automates Lift Curve Creation
+    Weights and credibility can be included
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Depends: dplyr, plotly
+RoxygenNote: 7.2.3
