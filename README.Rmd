@@ -1,0 +1,67 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# LizzieLift
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of LizzieLift is to make the creation of lift curves with weighted data simple.
+
+## Installation
+
+You can install the development version of LizzieLift like so:
+
+``` r
+library(devtools)
+library(LizzieLift)
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(LizzieLift)
+
+mock_data <- data.frame(preds=rep(1:4,10), target=rep(1:5,8), weights=rep(1:2,20))
+
+wltable(mock_data,"preds","target","weights",3)
+wlplot(mock_data,"preds","target","weights",3)
+wlcredplot(mock_data,"preds","target","weights",3)
+
+#when creating a package, use roxygen2::roxygenise() to create documentation after writing the source code .R file
+#ctrl+shift+B rebuilds package after editing
+#to connect existing package to github, make sure project has version control, commit changes, then run in the terminal:
+#git remote add origin git@github.com:easoneli176/reponame.git (can copy this link from repo)
+#git branch -M main
+#git push -u origin main
+```
+
+What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+
+```{r cars}
+summary(cars)
+```
+
+You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
+
+You can also embed plots, for example:
+
+```{r pressure, echo = FALSE}
+plot(pressure)
+```
+
+In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
