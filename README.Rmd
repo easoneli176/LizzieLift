@@ -53,7 +53,10 @@ wlcredplot(mock_data,"preds","target","weights",3)
 #git branch -M main
 #git push -u origin main
 
-
+#if packages need uploading:
+#manually find the package in windows, they're stored here: C:\Users\eason\AppData\Local\R\win-library\4.2
+#move the package out of that folder and keep it somewhere in case stuff breaks
+#then install the newest version. If issues, can go to cran website and get zip file to move into folder
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
