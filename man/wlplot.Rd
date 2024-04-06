@@ -4,7 +4,7 @@
 \alias{wlplot}
 \title{Creates plot of weighted lift curve}
 \usage{
-wlplot(data, predictions, actuals, weights, numbuckets)
+wlplot(data, predictions, actuals, weights, numbins)
 }
 \arguments{
 \item{data}{the dataset}
@@ -15,7 +15,7 @@ wlplot(data, predictions, actuals, weights, numbuckets)
 
 \item{weights}{the weights for the values}
 
-\item{numbuckets}{the number of buckets for the lift curve}
+\item{numbins}{the number of bins for the lift curve}
 }
 \value{
 a plot

@@ -4,7 +4,7 @@
 \alias{wltable}
 \title{Creates table for weighted lift curve}
 \usage{
-wltable(data, predictions, actuals, weights, numbuckets)
+wltable(data, predictions, actuals, weights, numbins)
 }
 \arguments{
 \item{data}{the dataset}
@@ -15,7 +15,7 @@ wltable(data, predictions, actuals, weights, numbuckets)
 
 \item{weights}{the weights for the values}
 
-\item{numbuckets}{the number of buckets for the lift curve}
+\item{numbins}{the number of bins for the lift curve}
 }
 \value{
 a table

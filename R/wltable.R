@@ -4,14 +4,14 @@
 #' @param predictions the predicted values
 #' @param actuals the actual values
 #' @param weights the weights for the values
-#' @param numbuckets the number of buckets for the lift curve
+#' @param numbins the number of bins for the lift curve
 #' @return a table
 #' @examples
 #' mock_data <- data.frame(preds = rep(1:4,10),target=rep(1:5,8),weights=rep(1:2,20))
 #' wltable(mock_data,"preds","target","weights",3)
 #'
 
-wltable<-function(data,predictions,actuals,weights,numbuckets){
+wltable<-function(data,predictions,actuals,weights,numbins){
   #Step 0: get column numbers of fields
   prednum<-which(colnames(data) == predictions)
   actnum<-which(colnames(data) == actuals)
@@ -24,42 +24,42 @@ wltable<-function(data,predictions,actuals,weights,numbuckets){
   orderacts<-data[,actnum]
   orderweights<-data[,wnum]
 
-  #Step 2: Bucket data
+  #Step 2: Bin data
   totwt<-sum(orderweights)
 
-  inc<-totwt/numbuckets
+  inc<-totwt/numbins
 
   data<-data %>%
     mutate(csum = cumsum(orderweights))
 
-  data$bucket<-1
+  data$bin<-1
 
   for (i in 1:nrow(data)){
-    bucket <-1
-    for (j in 1:numbuckets){
-      bucket<-ifelse(data$csum[i]>j*inc,j+1,bucket)
+    bin <-1
+    for (j in 1:numbins){
+      bin<-ifelse(data$csum[i]>j*inc,j+1,bin)
     }
-    data$bucket[i]<-bucket
+    data$bin[i]<-bin
   }
 
-  #Step 3: calculate weighted avg pred and actual for each bucket
-  bucketcred<-aggregate(orderweights, list(Bucket = data$bucket),sum)
+  #Step 3: calculate weighted avg pred and actual for each bin
+  bincred<-aggregate(orderweights, list(bin = data$bin),sum)
 
   data$wpred<-orderpreds*orderweights
 
-  bucketpred<-aggregate(data$wpred, list(Bucket = data$bucket),sum)
+  binpred<-aggregate(data$wpred, list(bin = data$bin),sum)
 
-  bucketpred$cred<-bucketcred$x
+  binpred$cred<-bincred$x
 
-  bucketpred$wpred<-bucketpred$x/bucketpred$cred
+  binpred$wpred<-binpred$x/binpred$cred
 
   data$wtarg <- orderacts*orderweights
 
-  bucketact<-aggregate(data$wtarg, list(Bucket = data$bucket),sum)
+  binact<-aggregate(data$wtarg, list(bin = data$bin),sum)
 
-  bucketpred$wtarg<-bucketact$x/bucketpred$cred
+  binpred$wtarg<-binact$x/binpred$cred
 
-  bucketpred<-bucketpred[,-2]
+  binpred<-binpred[,-2]
 
-  bucketpred
+  binpred
 }

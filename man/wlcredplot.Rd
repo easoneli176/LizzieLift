@@ -4,7 +4,7 @@
 \alias{wlcredplot}
 \title{Creates plot of weighted lift curve with credibility}
 \usage{
-wlcredplot(data, predictions, actuals, weights, numbuckets)
+wlcredplot(data, predictions, actuals, weights, numbins)
 }
 \arguments{
 \item{data}{the dataset}
@@ -15,7 +15,7 @@ wlcredplot(data, predictions, actuals, weights, numbuckets)
 
 \item{weights}{the weights for the values}
 
-\item{numbuckets}{the number of buckets for the lift curve}
+\item{numbins}{the number of bins for the lift curve}
 }
 \value{
 a plot
