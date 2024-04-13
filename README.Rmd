@@ -38,11 +38,25 @@ library(LizzieLift)
 
 mock_data <- data.frame(preds=rep(1:4,10), target=rep(1:5,8), weights=rep(1:2,20))
 
-#wltable(mock_data,"preds","target","weights",3)
-#wlplot(mock_data,"preds","target","weights",3)
+wltable(mock_data,"preds","target","weights",3)
+weightedliftplot<-wlplot(mock_data,"preds","target","weights",3)
 #wlcredplot(mock_data,"preds","target","weights",3)
-#ltable(mock_data,"preds","target",3)
+ltable(mock_data,"preds","target",3)
 #lplot(mock_data,"preds","target",3)
+
+```
+
+```{r include, echo = FALSE}
+htmlwidgets::saveWidget(weightedliftplot, "index.html")
+
+htmltools::tags$iframe(
+  src=file.path(getwd(), "index.html"),
+  width="100%",
+  height="600",
+  scrolling="no",
+  seamless="seamless",
+  frameBorder="0"
+)
 
 ```
 

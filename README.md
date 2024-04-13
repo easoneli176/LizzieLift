@@ -63,9 +63,19 @@ library(LizzieLift)
 
 mock_data <- data.frame(preds=rep(1:4,10), target=rep(1:5,8), weights=rep(1:2,20))
 
-#wltable(mock_data,"preds","target","weights",3)
-#wlplot(mock_data,"preds","target","weights",3)
+wltable(mock_data,"preds","target","weights",3)
+#>   bin cred wpred wtarg
+#> 1   1   20   1.5     3
+#> 2   2   20   2.5     3
+#> 3   3   20   4.0     3
+weightedliftplot<-wlplot(mock_data,"preds","target","weights",3)
 #wlcredplot(mock_data,"preds","target","weights",3)
-#ltable(mock_data,"preds","target",3)
+ltable(mock_data,"preds","target",3)
+#>   bin     pred      act
+#> 1   1 1.230769 2.923077
+#> 2   2 2.461538 3.076923
+#> 3   3 3.714286 3.000000
 #lplot(mock_data,"preds","target",3)
 ```
+
+<iframe src="C:/Users/eason/Desktop/Blog/LizzieLift/index.html" width="100%" height="600" scrolling="no" seamless="seamless" frameBorder="0"></iframe>
